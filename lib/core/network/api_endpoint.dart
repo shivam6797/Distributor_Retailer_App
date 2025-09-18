@@ -3,9 +3,8 @@ class ApiEndpoints {
   static const String baseUrl = "http://128.199.98.121";
 
   // ---------- Distributor/Retailer ----------
-  static String getDistriRetailUrl(int type) {
-    // type = 1 distributor, type = 2 retailer
-    return "$baseUrl/admin/Api/get_retailer_distributor_master/$type";
+  static String getDistriRetailUrl(int page) {
+    return "$baseUrl/admin/Api/get_retailer_distributor_master/$page";
   }
 
   // ---------- Distributor/Retailer Add/Update ----------
