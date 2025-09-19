@@ -39,7 +39,7 @@ class DistributorRetailerRepository {
     try {
       final formData = FormData.fromMap(model.toJson());
 
-      print("📌 FormData fields: ${model.toJson()}");
+      print("FormData fields: ${model.toJson()}");
 
       if (model.imagePath != null && model.imagePath!.isNotEmpty) {
         formData.files.add(
@@ -52,14 +52,14 @@ class DistributorRetailerRepository {
           ),
         );
 
-        print("📌 Image added: ${model.imagePath!}");
+        print("Image added: ${model.imagePath!}");
       }
 
       formData.fields.forEach((field) {
-        print("➡️ Field: ${field.key} = ${field.value}");
+        print("Field: ${field.key} = ${field.value}");
       });
       formData.files.forEach((file) {
-        print("➡️ File: ${file.key} = ${file.value.filename}");
+        print("File: ${file.key} = ${file.value.filename}");
       });
 
       final response = await apiClient.post(
@@ -67,10 +67,10 @@ class DistributorRetailerRepository {
         headers: {"Authorization": "4ccda7514adc0f13595a585205fb9761"},
         data: formData,
       );
-      print("📌 API Response: $response");
+      print("API Response: $response");
       return response;
     } catch (e) {
-      print("❌ API Error in addOrUpdateDistributorRetailer: $e");
+      print("API Error in addOrUpdateDistributorRetailer: $e");
       if (e is DioException) {
         final errorMsg = e.response?.data?['msg'] ?? e.message;
         throw ApiException(errorMsg);

@@ -40,16 +40,16 @@ class ApiClient {
   Map<String, dynamic>? headers,
 }) async {
   try {
-    print("📡 POST Request");
-    print("➡️ URL: $url");
-    if (headers != null) print("➡️ Headers: $headers");
+    print("POST Request");
+    print("URL: $url");
+    if (headers != null) print("Headers: $headers");
 
     if (data is FormData) {
-      print("➡️ Data (FormData):");
+      print("Data (FormData):");
       data.fields.forEach((f) => print("   ${f.key} = ${f.value}"));
       data.files.forEach((f) => print("   FILE: ${f.key} -> ${f.value.filename}"));
     } else {
-      print("➡️ Data: $data");
+      print("Data: $data");
     }
 
     final response = await _dio.post(
@@ -58,11 +58,11 @@ class ApiClient {
       options: Options(headers: headers),
     );
 
-    print("✅ Response [${response.statusCode}]: ${response.data}");
+    print("Response [${response.statusCode}]: ${response.data}");
 
     return response.data;
   } catch (error) {
-    print("❌ API Error: $error");
+    print("API Error: $error");
     throw ApiException.fromDioError(error);
   }
 }
